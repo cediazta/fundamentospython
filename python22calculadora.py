@@ -1,7 +1,7 @@
 ## CALCULADORA
-# Importaciones Librerias
+# Librerias
 from libreria22calculadora import *
-
+    
 # Muestra por pantalla
 print("----- CALCULADORA -----")
 
