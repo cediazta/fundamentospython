@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770048693">
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770048373">
     <rich_text>## Tipos de Variables
 	
 	→ str (texto)
@@ -152,9 +152,7 @@
 		→ la llamada seria solo al metodo (metodo1())
 		
 ## Metodos
-	→ __init__ (Constructor)
-	→ __str__ (sobrescribir por como lo queramos)
-	
+	→ __init__ 
 		
 
 *** LIBRERIAS ***
