@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770048394">
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770054737">
     <rich_text>## Tipos de Variables
 	
 	→ str (texto)
@@ -153,7 +153,9 @@
 		
 ## Metodos
 	→ __init__ (Constructor)
-	→ __str__ (string)
+	→ __str__ (sobrescribir por como lo queramos)
+	
+	
 		
 
 *** LIBRERIAS ***
