@@ -208,10 +208,8 @@
 
 </rich_text>
   </node>
-  <node unique_id="2" master_id="0" name="MySQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770134993">
+  <node unique_id="2" master_id="0" name="MySQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770134967">
     <rich_text>User: SYSTEM
-Password: oracle
-Port: 1521
-SSID: FREEPDB1</rich_text>
+Password: </rich_text>
   </node>
 </cherrytree>
