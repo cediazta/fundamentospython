@@ -6,5 +6,5 @@ class Mascotas:
         self.anyoAdopcion = 0
     
     def getAnyosAdoptada(self):
-        anyosAdoptada = 2025 - self.anyoAdopcion
+        anyosAdoptada = 2026 - self.anyoAdopcion
         return anyosAdoptada
