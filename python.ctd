@@ -208,7 +208,7 @@
 
 </rich_text>
   </node>
-  <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770145382">
+  <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770224909">
     <rich_text>User: SYSTEM
 Password: oracle
 Port: 1521
@@ -308,6 +308,43 @@ select APELLIDO, OFICIO, SALARIO + COMISION as TOTALSALARIO from EMP;
 select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP where (SALARIO + COMISION) &gt;= 300000;
 -- si podemos utilizar order by con campos calculados.
     -- "order by" ordena sobre el cursor
-select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP order by TOTAL;</rich_text>
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP order by TOTAL;
+
+-- CONSULTAS DE AGRUPACION
+
+( CONTENIDO DEL WORD DE CLASE)
+
+
+-- Mostrar el numero de empleados de la tabla
+select count(*) as REGISTROS from EMP;
+
+-- Podemos combinar varias funciones en una misma consulta
+-- Mostrar numero de empleados y la suma salarial de todo
+select count(*) as REGISTROS, sum(SALARIO) as SUMASALARIAL, MAX(SALARIO) as AL from EMP;
+
+-- Queremos saber el numero de empleados por cada oficio
+select count(*) as EMPLEADOS, OFICIO from EMP group by OFICIO;
+
+-- Mostrar el Maximo salario, numero de personas por cada oficio y por cada departamento.
+select max(SALARIO) as MAXIMOSALARIO, count(*) as PERSONAS, OFICIO, DEPT_NO from EMP group by OFICIO, DEPT-NO;
+
+
+(ESTRUCTURAS WORD)
+
+-- Mostrar el numero de personas por cada OFICIO
+-- pero solamente mostrando DIRECTOR Y ANALISTA
+select count(*) as PERSONAS,OFICIO from EMP where OFICIO in ('ANALISTA', ‘DIRECTOR’) group by OFICIO;
+
+-- Mostrar el numero de empleados por cada oficio pero solamente mostrando los oficios donde tengamos mas de 2 personas trabajando
+select count (*) as PERSONAS, OFICIO from EMP group by OFICIO having count(*) &gt; 2;
+
+-- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0.
+select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO;
+
+-- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0 y cuya suma salarial sea mayot a 51500.
+select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO having sum(SALARIO) &gt; 51500;
+
+
+</rich_text>
   </node>
 </cherrytree>

@@ -208,10 +208,141 @@
 
 </rich_text>
   </node>
-  <node unique_id="2" master_id="0" name="MySQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770134993">
+  <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770224688">
     <rich_text>User: SYSTEM
 Password: oracle
 Port: 1521
-SSID: FREEPDB1</rich_text>
+SSID: FREEPDB1
+
+
+-- PODEMOS TENER VARIAS CONSULTAS EN ESTE SCRIPT
+-- SOLAMENTE SE EJECUTA EN LA QUE ESTEMOS POSICIONADOS (CNTRL + ENTER)
+-- NO EXISTE DIFERENCIA CASE SENSITIVE (MAYUS O MINUS)
+-- EL * SE UTILIZA PARA INDICAR TODAS LAS COLUMNAS DE UNA TABLA
+-- select COLUMNA1, COLUMNA2 from TABLA
+select * from DEPT;
+select * from EMP;
+
+-- EXISTEN CONSULTAS QUE SON MAS OPTIMAS QUE OTRAS Y DEVUELVEN LO MISMO
+select DEPT_NO, DNOMBRE, LOC FROM DEPT;
+
+-- ORDENAR LOS DATOS: order by CAMPO
+select * from EMP order by SALARIO desc;
+select * from EMP order by OFICIO desc;
+
+-- FILTROS DE CONSULTAS
+-- permiten filtrar registros por columnas en sus datos, utilizan el operador "where"
+-- utilizan operadores condicionales, si el dato a filtrar no es un numero, se utilizan las comillas simples ''
+-- Algunos son diferentes a PYTHON
+/*
+= IGUAL
+&lt;&gt; DISTINTO
+&gt; MAYOR
+&gt;= MAYOR O IGUAL
+&lt; MENOR
+&lt;= MENOR O IGUAL
+*/
+-- mostrar los empleados del departamento 10
+-- where CAMPO = VALOR
+select * from EMP where DEPT_NO = 10;
+-- mostrar todos los empleados con oficio director
+-- Oracle diferencian en sus datos string
+select * from EMP where OFICIO = 'DIRECTOR';
+select * from EMP where OFICIO = 'director';
+-- mostrar los empleados que sean distintos al departamento 10
+select * from EMP where DEPT_NO &lt;&gt; 10;
+-- = select * from EMP where DEPT_NO != 10;
+
+-- OPERADORES RELACIONALES
+-- permiten filtrar por mas de una condicion, solamente podemos tener un where
+-- AND: todas las condiciones se deben cumplir
+-- OR: devuelven registros de cada condicion
+-- NOT: negacion de una condicion
+-- Mostrar todos los empleados con oficion director y un salario mayor a 300.000
+select * from EMP where OFICIO='DIRECTOR' or SALARIO &gt; 300000;
+-- Mostrar todos los empleados que sean del departamento 10 y el departamento 20
+select * from EMP where DEPT_NO=10 or DEPT_NO=20;
+-- Mostrar todos los empleados que no sean del departamento 20
+select * from EMP where not DEPT_NO = 20;
+-- = select * from EMP where DEPT_NO &lt;&gt; 20;
+
+-- Existen otra serie de operadores de comparacion ademas de los basicos
+-- "between" busca entre dos rangos inclusive
+-- Mostrar todos los empleados que tengan un salario entre 123500 y 318500
+select * from EMP where SALARIO between 123500 and 318500;
+select * from EMP where SALARIO &gt;= 123500 and SALARIO &lt;= 318500;
+
+-- Operador "IN" permite buscar entre diferentes valores de un mismo campo
+-- Mostrar todos los empleados del departamento 10 y 20
+select * from EMP where DEPT_NO in (10, 20, 30);
+-- = select * from EMP where DEPT_NO = 10 or DEPT_NO = 20 or DEPT_NO = 30;
+
+-- Operador "NOT IN" que busca entre diferentes valores de un mismo campo y devuelve los que correspondan
+-- Mostrar todos los empleados que no esten en el departamento 10 y 20
+select * from EMP where NOT DEPT_NO in (10,20); -- ESTO ES UNA NEGACION, NO EFICIENTE
+select * from EMP where DEPT_NO not in (10,20);
+
+-- Tenemos un operador que nos permite hacer busquedas dentro de textos.
+-- Es el operador "like" y utiliza caravteristicas especiales para las busquedas.
+    -- ? Busca si el caracter es un numero
+    -- _ Cualquier unico caracter
+    -- % Cualquier caracter y cualquier tamaño
+-- Mostrar todos los empleados cuyo apellido comienza en "s"
+select * from EMP where APELLIDO like 's%';
+-- Mostrar todos los empleados cuyo apellido comienza en "s" y finalicen en "a"
+select * from EMP where APELLIDO like 's%a';
+-- Mostrar todos los empleados cuyo apellido tenga 4 letras
+select * from EMP where APELLIDO like '____';
+
+-- Clausula "distinct" elimina datos repetidos de la consulta
+-- Se suele utilizar con pocos campos
+select distinct OFICIO from EMP;
+
+-- Campos calculados. Son columnas que no existen en la tabla y que podemos generar con una consulta
+-- Los campos calculados siempre deben tener un ALIAS, se interpreta con "as"
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTALSALARIO from EMP;
+
+-- no podemos utilizar where con campos calculador (mentira).
+    -- Where filtra sobre la tabla
+    -- Si queremos filtrar sobre un campo calculado, debemos escribir el calculo de nuevo para el where
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP where (SALARIO + COMISION) &gt;= 300000;
+-- si podemos utilizar order by con campos calculados.
+    -- "order by" ordena sobre el cursor
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP order by TOTAL;
+
+-- CONSULTAS DE AGRUPACION
+
+( CONTENIDO DEL WORD DE CLASE)
+
+
+-- Mostrar el numero de empleados de la tabla
+select count(*) as REGISTROS from EMP;
+
+-- Podemos combinar varias funciones en una misma consulta
+-- Mostrar numero de empleados y la suma salarial de todo
+select count(*) as REGISTROS, sum(SALARIO) as SUMASALARIAL, MAX(SALARIO) as AL from EMP;
+
+-- Queremos saber el numero de empleados por cada oficio
+select count(*) as EMPLEADOS, OFICIO from EMP group by OFICIO;
+
+-- Mostrar el Maximo salario, numero de personas por cada oficio y por cada departamento.
+select max(SALARIO) as MAXIMOSALARIO, count(*) as PERSONAS, OFICIO, DEPT_NO from EMP group by OFICIO, DEPT-NO;
+
+
+(ESTRUCTURAS WORD)
+-- Mostrar el numero de personas por cada OFICIO
+-- pero solamente mostrando DIRECTOR Y ANALISTA
+select count(*) as PERSONAS,OFICIO from EMP where OFICIO in ('ANALISTA', ‘DIRECTOR’) group by OFICIO;
+
+-- Mostrar el numero de empleados por cada oficio pero solamente mostrando los oficios donde tengamos mas de 2 personas trabajando
+select count (*) as PERSONAS, OFICIO from EMP group by OFICIO having count(*) &gt; 2;
+
+-- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0.
+select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO;
+
+-- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0.
+select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO;
+
+</rich_text>
   </node>
 </cherrytree>
