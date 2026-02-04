@@ -208,7 +208,7 @@
 
 </rich_text>
   </node>
-  <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770224909">
+  <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770242417">
     <rich_text>User: SYSTEM
 Password: oracle
 Port: 1521
@@ -343,6 +343,135 @@ select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group
 
 -- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0 y cuya suma salarial sea mayot a 51500.
 select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO having sum(SALARIO) &gt; 51500;
+
+
+</rich_text>
+  </node>
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770244063">
+    <rich_text>• SINTAXIS
+</rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">columna1</rich_text>
+    <rich_text foreground="#cccccc">, </rich_text>
+    <rich_text foreground="#9cdcfe">columna2</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">tabla</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">nombre</rich_text>
+    <rich_text foreground="#cccccc">, </rich_text>
+    <rich_text foreground="#9cdcfe">apellido</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">clientes</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+
+• DISTINCT (SOLO MUESTRA LOS CAMPOS DISTINTOS)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">DISTINCT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">nombre</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">clientes</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra los nombres sin repetir.
+ 
+• WHERE (especificar datos, algo concreto)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">WHERE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text> </rich_text>
+    <rich_text foreground="#d4d4d4">=</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#b5cea8">22</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra todo de la tabla DOCTOR que tenga 22 en la columna HOSPITAL_COD.
+ 
+• ORDER BY (Orden descendente)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ORDER</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">BY</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Ordena la columna HOSPITAL_COD en orden descendente.
+ 
+• ORDER BY (Orden ascendente)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ORDER</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">BY</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ASC</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Ordena la columna HOSPITAL_COD en orden ascendente.
+
+• LIKE (damos un criterio de busqueda variable)
+•Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">apellido</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">WHERE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">especialidad</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">LIKE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#ce9178">'%logia'</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra los APELLIDOS de la tabla DOCTOR cuya ESPECIALIDAD contenga ‘%logia’ (% cualquier caracter)
+
+
 
 
 </rich_text>
