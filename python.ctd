@@ -208,6 +208,187 @@
 
 </rich_text>
   </node>
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770315707">
+    <rich_text>## CONSULTAS DE AGRUPACION (MISMA TABLA)
+
+• SINTAXIS
+</rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">columna1</rich_text>
+    <rich_text foreground="#cccccc">, </rich_text>
+    <rich_text foreground="#9cdcfe">columna2</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">tabla</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">nombre</rich_text>
+    <rich_text foreground="#cccccc">, </rich_text>
+    <rich_text foreground="#9cdcfe">apellido</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">clientes</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+
+• DISTINCT (SOLO MUESTRA LOS CAMPOS DISTINTOS)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">DISTINCT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">nombre</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">clientes</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra los nombres sin repetir.
+ 
+• WHERE (especificar datos, algo concreto)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">WHERE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text> </rich_text>
+    <rich_text foreground="#d4d4d4">=</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#b5cea8">22</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra todo de la tabla DOCTOR que tenga 22 en la columna HOSPITAL_COD.
+ 
+• ORDER BY (Orden descendente)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ORDER</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">BY</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Ordena la columna HOSPITAL_COD en orden descendente.
+ 
+• ORDER BY (Orden ascendente)
+Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#d4d4d4">*</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ORDER</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">BY</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">ASC</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Ordena la columna HOSPITAL_COD en orden ascendente.
+
+• LIKE (damos un criterio de busqueda variable)
+•Ej: </rich_text>
+    <rich_text foreground="#569cd6">SELECT</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">apellido</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">FROM</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">doctor</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">WHERE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#9cdcfe">especialidad</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#569cd6">LIKE</rich_text>
+    <rich_text foreground="#cccccc"> </rich_text>
+    <rich_text foreground="#ce9178">'%logia'</rich_text>
+    <rich_text foreground="#cccccc">;</rich_text>
+    <rich_text>
+ - Muestra los APELLIDOS de la tabla DOCTOR cuya ESPECIALIDAD contenga ‘%logia’ (% cualquier caracter)
+
+
+
+
+
+
+
+## CONSULTAS COMBINADAS (DISTINTAS TABLAS)
+
+• SINTAXIS
+SELECT tabla1.campo, tabla1.campo2, tabla2.campo1, tabla2.campo2 FROM tabla1 INNER JOIN tabla2 ON tabla1.camporelacion = tabla2.camporelacion;
+Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp INNER JOIN dept ON emp.dept_no = emp.dept_no;
+-- Miestra el apellido, oficio, nombre de departamento, localidad de los empleados de las tablas dept y emp.
+
+• WHERE
+ej: SELECT emp.apellIdo, emp.oficio, dept.dnombre, dept.loc FROM emp INNER JOIN dept on emp.dept_no = dept.dept_no WHERE dept.loc ='SEVILLA';
+-- Miestra el apellido, oficio, nombre de departamento, localidad de los empleados de las tablas dept y emp y solo mostrar los que su localidad sea Sevilla.
+
+• AS (alias)
+Ej: SELECT e.apellIdo, e.oficio, d.dnombre, d.loc FROM emp e INNER JOIN dept d on e.dept_no = d.dept_no WHERE d.loc ='SEVILLA';
+-- Crea un alias a las 2 tablas y se sustituye como nombre de tabla al ingresar los campos.
+
+
+
+
+
+## CONSULTAS COMBINADAS + CONSULTAS DE AGRUPACION
+Ej: SELECT COUNT(*) AS personas, dept.dnombre FROM emp INNER JOIN dept on emp.dept_no = dept.dept_no GROUP BY dept.dnombre;
+-- Muestra el numero de personas por cada nombre de departamento de los empleados.
+
+•  JOIN
+ → INNER JOIN: (Muestra los resultados que combinen entre las dos tablas).
+ Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp INNER JOIN dept ON emp.dept_no = dept.dept_no;
+ 
+ → LEFT JOIN: (Muestra los resultados que combinen entre las dos tablas y tambien los que no 				combinen de la tabla de la izquierda). (ES LA TABLA ANTES DEL JOIN)
+ Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp LEFT JOIN dept ON emp.dept_no = dept.dept_no;
+ 
+ → RIGHT JOIN: (Muestra los resultados que combinen entre las dos tablas y tambien los que no 				combinen de la tabla de la derecha). (ES LA TABLA DESPUES DEL JOIN)
+ Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp RIGHT JOIN dept ON emp.dept_no = dept.dept_no;
+ 
+ → FULL JOIN: (Muestra los resultados de las dos tablas combinen o no combinen). (MUESTRA TODOS)
+ Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp FULL JOIN dept ON emp.dept_no = dept.dept_no;
+ 
+ → CROSS JOIN: (Muestra el producto cartesiano). (NO SE UTILIZA “ON")
+ Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp CROSS JOIN dept;
+ 
+ 
+
+• INNER JOIN (CON LAS TABLAS QUE QUERAMOS)
+Ej: select tabla1.campo1, tabla1.campo2, tabla2.campo1, tabla2.campo2, tabla3.campo1, tabla3.campo2 FROM tabla1 INNER JOIN tabla2 on tabla1.camporelacion= tabla2.camporelacion INNER JOIN tabla3 on tabla1.camporelacion = tabla3.camporelacion
+
+→ Si hay mas campos relacionados entre si, se pondria con un AND
+Ej: SELECT plantilla.apellido, plantilla.funcion, hospital.nombre, hospital.direccion, sala.nombre FROM plantilla INNER JOIN hospital ON plantilla.hospital_cod = hospital.hospital_cod INNER JOIN sala ON hospital.hospital_cod = sala.hospital_cod AND plantilla.sala_cod = sala.sala_cod;
+
+</rich_text>
+  </node>
   <node unique_id="2" master_id="0" name="Oracle SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770130084" ts_lastsave="1770242417">
     <rich_text>User: SYSTEM
 Password: oracle
@@ -343,135 +524,6 @@ select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group
 
 -- Mostrar la suma salarial por cada oficio solamente de las personas que tengan una comision mayor a 0 y cuya suma salarial sea mayot a 51500.
 select sum(SALARIO) as SUMASALARIAL, OFICIO from EMP where comision &gt; 0 group by OFICIO having sum(SALARIO) &gt; 51500;
-
-
-</rich_text>
-  </node>
-  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770244063">
-    <rich_text>• SINTAXIS
-</rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">columna1</rich_text>
-    <rich_text foreground="#cccccc">, </rich_text>
-    <rich_text foreground="#9cdcfe">columna2</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">tabla</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
-Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">nombre</rich_text>
-    <rich_text foreground="#cccccc">, </rich_text>
-    <rich_text foreground="#9cdcfe">apellido</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">clientes</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
-
-• DISTINCT (SOLO MUESTRA LOS CAMPOS DISTINTOS)
-Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">DISTINCT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">nombre</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">clientes</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
- - Muestra los nombres sin repetir.
- 
-• WHERE (especificar datos, algo concreto)
-Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#d4d4d4">*</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">doctor</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">WHERE</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
-    <rich_text> </rich_text>
-    <rich_text foreground="#d4d4d4">=</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#b5cea8">22</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
- - Muestra todo de la tabla DOCTOR que tenga 22 en la columna HOSPITAL_COD.
- 
-• ORDER BY (Orden descendente)
-Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#d4d4d4">*</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">doctor</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">ORDER</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">BY</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
- - Ordena la columna HOSPITAL_COD en orden descendente.
- 
-• ORDER BY (Orden ascendente)
-Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#d4d4d4">*</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">doctor</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">ORDER</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">BY</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">hospital_cod</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">ASC</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
- - Ordena la columna HOSPITAL_COD en orden ascendente.
-
-• LIKE (damos un criterio de busqueda variable)
-•Ej: </rich_text>
-    <rich_text foreground="#569cd6">SELECT</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">apellido</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">FROM</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">doctor</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">WHERE</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#9cdcfe">especialidad</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#569cd6">LIKE</rich_text>
-    <rich_text foreground="#cccccc"> </rich_text>
-    <rich_text foreground="#ce9178">'%logia'</rich_text>
-    <rich_text foreground="#cccccc">;</rich_text>
-    <rich_text>
- - Muestra los APELLIDOS de la tabla DOCTOR cuya ESPECIALIDAD contenga ‘%logia’ (% cualquier caracter)
-
-
 
 
 </rich_text>
