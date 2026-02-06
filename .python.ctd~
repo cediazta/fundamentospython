@@ -208,8 +208,9 @@
 
 </rich_text>
   </node>
-  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770312564">
-    <rich_text>## CONSULTAS DE AGRUPACION (MISMA TABLA)
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770396246">
+    <rich_text foreground="#ffbe6f">## CONSULTAS DE AGRUPACION (MISMA TABLA)</rich_text>
+    <rich_text>
 
 • SINTAXIS
 </rich_text>
@@ -340,7 +341,9 @@ Ej: </rich_text>
 
 
 
-## CONSULTAS COMBINADAS (DISTINTAS TABLAS)
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS COMBINADAS (DISTINTAS TABLAS)</rich_text>
+    <rich_text>
 
 • SINTAXIS
 SELECT tabla1.campo, tabla1.campo2, tabla2.campo1, tabla2.campo2 FROM tabla1 INNER JOIN tabla2 ON tabla1.camporelacion = tabla2.camporelacion;
@@ -359,7 +362,9 @@ Ej: SELECT e.apellIdo, e.oficio, d.dnombre, d.loc FROM emp e INNER JOIN dept d o
 
 
 
-## CONSULTAS COMBINADAS + CONSULTAS DE AGRUPACION
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS COMBINADAS + CONSULTAS DE AGRUPACION</rich_text>
+    <rich_text>
 Ej: SELECT COUNT(*) AS personas, dept.dnombre FROM emp INNER JOIN dept on emp.dept_no = dept.dept_no GROUP BY dept.dnombre;
 -- Muestra el numero de personas por cada nombre de departamento de los empleados.
 
@@ -379,13 +384,142 @@ Ej: SELECT COUNT(*) AS personas, dept.dnombre FROM emp INNER JOIN dept on emp.de
  → CROSS JOIN: (Muestra el producto cartesiano). (NO SE UTILIZA “ON")
  Ej: SELECT emp.apellido, emp.oficio, dept.dnombre, dept.loc FROM emp CROSS JOIN dept;
  
- 
 
 • INNER JOIN (CON LAS TABLAS QUE QUERAMOS)
 Ej: select tabla1.campo1, tabla1.campo2, tabla2.campo1, tabla2.campo2, tabla3.campo1, tabla3.campo2 FROM tabla1 INNER JOIN tabla2 on tabla1.camporelacion= tabla2.camporelacion INNER JOIN tabla3 on tabla1.camporelacion = tabla3.camporelacion
 
-→ Si hay mas campos relacionados entre si, se pondria conun AND
+→ Si hay mas campos relacionados entre si, se pondria con un AND
 Ej: SELECT plantilla.apellido, plantilla.funcion, hospital.nombre, hospital.direccion, sala.nombre FROM plantilla INNER JOIN hospital ON plantilla.hospital_cod = hospital.hospital_cod INNER JOIN sala ON hospital.hospital_cod = sala.hospital_cod AND plantilla.sala_cod = sala.sala_cod;
+
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SUBCONSULTAS</rich_text>
+    <rich_text>
+(es necesario los datos de una primera consulta para realizad otra consulta)
+→ Consultas de seleccion (evitarlas ya que pueden producir bloqueos).
+
+Ej: SELECT MAX(salario) FROM emp;
+-- Primero se busca un valor especifico (el empleado que mas cobra) para saber el salario.
+Ej: SELECT * FROM emp WHERE salario=650000;
+-- una vez saber el salario, se puede hacer la subconsulta completa gracias a ese valor.
+
+→ SINTAXIS (lo anterior pero combinada) CONSULTA1 =(CONSULTA2)
+Ej: SELECT * FROM emp WHERE salario=(SELECT MAX(salario) FROM emp);
+
+## VARIAS SUBCONSULTAS (CONSULTA1 = (CONSULTA2) Y (CONSULTA3)
+Ej: SELECT * FROM emp WHERE oficio = (SELECT oficio FROM emp WHERE apellido = 'alonso') AND salario &gt; (SELECT salario FROM emp WHERE apellido ='sala');
+
+→ IN (para devolver mas de un valor)
+Ej: SELECT * FROM emp WHERE oficio IN (SELECT oficio FROM emp WHERE apellido = 'jimenez' OR apellido = 'alonso');
+
+→ ROWNUM &lt;= numfilas (muestra el numero de filas especificado)
+
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS UNION (TABLAS QUE NO ESTAN UNIDAS)</rich_text>
+    <rich_text>
+
+→ Hay que seguir 3 normas:
+	1. La primera consulta es la MAIN.
+	2. Todas las consultas deben tener el mismo numero de columnas
+	3. todas las columnas deben dtener el mismo dato entre si (texto o numero).
+	
+→ SINTAXIS
+
+Ejemplo:
+SELECT apellido, oficio, salario AS SUELDO FROM emp 
+UNION
+SELECT apellido, especialidad, salario FROM doctor 
+UNION
+SELECT apellido, funcion, salario FROM plantilla;
+
+
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SELECT TO SELECT (HACER UN SELECT SOBRE UNA CONSULTA YA REALIZADA)</rich_text>
+    <rich_text>
+
+→ 1. Envolver la consulta sobre la que deseemos realizar el select entre parentesis.
+→ 2. que la consulta envuelta tenga un alias.
+(el alias se establece como en los join, con espacio despues del parentesis de la consulta).
+
+→ SINTAXIS
+
+Ejemplo:
+SELECT * FROM (SELECT apellido, oficio, salario AS SUELDO FROM emp 
+UNION
+SELECT apellido, especialidad, salario FROM doctor 
+UNION
+SELECT apellido, funcion, salario FROM plantilla) consulta
+WHERE consulta.sueldo &gt;= 250000;
+
+
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SELECT TO ROW (ES UN IF EN EL SERVER)</rich_text>
+    <rich_text>
+
+→ Evalua valores dentro de cada fila y permite cambiar el resultado a mostrar en el cursor por otros datos distintos.
+
+→ SINTAXIS
+SELECT campo1, campo2
+CASE	campo 3
+    WHEN valor1 THEN otrovalor1
+    WHEN valor2 THEN otrovalor2
+    ELSE otrovalor3
+END AS alias
+FROM tabla;
+
+
+Ejemplo:
+SELECT apellido, funcion,
+CASE TURNO
+    WHEN 'T' THEN 'TARDE'
+    WHEN 'M' THEN 'MAÑANA'
+    ELSE 'NOCHE'
+END AS TURNOBONITO, turno 
+FROM plantilla;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </rich_text>
   </node>
