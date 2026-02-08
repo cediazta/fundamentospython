@@ -38,34 +38,50 @@ select plantilla.apellido, plantilla.funcion, sala.nombre as oficina from planti
 inner join sala 
 on plantilla.hospital_cod = sala.hospital_cod;
 
--- Ejercicio 6
+-- Ejercicio 6 (chatgpt)
 -- apellidos
 -- oficio
 -- de los empleados del dpto 20
 -- cuyo trabajo sea al mismo que el de cualquier empleado de ventas.
 
-
-
-
-select emp.apellido, dept.dnombre 
+select apellido, oficio 
 from emp 
-INNER join dept 
-on emp.dept_no = dept.dept_no
-where dnombre = 'VENTAS';
+where dept_no = 20 AND
+oficio in (
+    select oficio 
+    from emp 
+    where dept_no = (
+        select dept_no 
+        from dept
+        where dnombre = 'VENTAS'));
+
+-- Ejercicio 7 (MAL RESUELTO, MUESTRA AL PRESIDENTE)
+-- empleados con mejor salario que la media de directores
+-- no presidente
+select apellido from emp where salario > (
+select avg(salario) from emp where oficio = 'DIRECTOR') and oficio <> (select oficio from emp where oficio = 'PRESIDENTE');
 
 
+-- Ejercicio 8
+-- apellido, funcion, salario y codigo de hospital
+-- que siendo enfermeros o enfermeras pertenecen al hospital san carlos
+select apellido, funcion, salario, hospital_cod 
+from plantilla 
+where (funcion = 'ENFERMERA' or funcion ='ENFERMERO')
+and hospital_cod =
+(select hospital_cod from hospital where nombre = 'san carlos');
 
+-- Ejercicio 9
+-- Averiguar el salario de todas las personas de la bbdd
+-- que se aprecien las diferencias salariales entre ellos
 
-
-where emp.apellido in (select apellido, oficio from emp where dept_no = 20);
-
-
-
-
-
-
-
-
-
-
+select apellido, oficio, salario, 'EMP' as TABLA
+from emp 
+union
+select apellido, funcion, salario, 'PLANTILLA'
+from plantilla 
+union
+select apellido, especialidad, salario, 'DOCTOR'
+from doctor 
+order by salario desc;
 
