@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770130084">
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770664712">
     <rich_text>## Tipos de Variables
 	
 	→ str (texto)
@@ -158,9 +158,22 @@
 	# Herencias
 	→ super() (recuperar un atributo de un metodo del main)
 
+BBDD:
+	→ Conection: Conectar con la base de datos utilizando una cadena de conexion.
+		-- Servidor. User, Password
+	→ Cursor: Objeto de base de datos que contiene las consultas SELECT.
+
+
+
 
 
 *** LIBRERIAS ***
+
+## Oracledb
+
+→ connection:
+→ cursor:
+→ fetchone():
 		
 ## Tkinter
 
@@ -208,7 +221,7 @@
 
 </rich_text>
   </node>
-  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770654198">
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770658038">
     <rich_text foreground="#ffbe6f">## CONSULTAS DE AGRUPACION (MISMA TABLA)</rich_text>
     <rich_text>
 
@@ -541,7 +554,7 @@ NOTA: Si la consulta NO tiene where, elimina todos los registros de la tabla.
 		where funcion = ‘ENFERMERO';
 		-- Todos los los ENFERMEROS pasan a ser ENFERMERA y se les sube sl salario a todos en 1.
 		
-NOTA: Si no se pone WHERE se aplioca a todos los registros de la tabla.	
+NOTA: Si no se pone WHERE se aplica a todos los registros de la tabla.	
 
 		→ update TABLA set CAMPO1= valor 1, CAMPO2= valor2
 		
@@ -556,6 +569,9 @@ NOTA: Si no se pone WHERE se aplioca a todos los registros de la tabla.
 NOTA: Las instrucciones WHERE son iguales que en las consultas de seleccion, operadores y todo.
 
 
+Por ultimo, tenemos una instruccion para eliminar todos los registros de una tabla de la forma mas rapida porque no tiene rollback.
+
+→ TRUNCATE TABLE NOMBRETABLA (Suelen tener esta funcion bloqueada en las empresas para los users).
 
 
 

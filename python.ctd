@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770130084">
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770664892">
     <rich_text>## Tipos de Variables
 	
 	→ str (texto)
@@ -158,9 +158,25 @@
 	# Herencias
 	→ super() (recuperar un atributo de un metodo del main)
 
+BBDD:
+	→ Conection: Conectar con la base de datos utilizando una cadena de conexion.
+		-- Servidor. User, Password
+	→ Cursor: Objeto de base de datos que contiene las consultas SELECT.
+
+
+
 
 
 *** LIBRERIAS ***
+
+## Oracledb
+
+→ connection:
+→ cursor:
+→ .fetchone(): metodo que se mueve por cada fila cada vez que lo ejecutamos.
+→ .close(): cerrar todos los recursos utilizados
+
+
 		
 ## Tkinter
 
