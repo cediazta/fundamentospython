@@ -208,7 +208,7 @@
 
 </rich_text>
   </node>
-  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770402148">
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770658038">
     <rich_text foreground="#ffbe6f">## CONSULTAS DE AGRUPACION (MISMA TABLA)</rich_text>
     <rich_text>
 
@@ -412,7 +412,7 @@ Ej: SELECT * FROM emp WHERE salario=(SELECT MAX(salario) FROM emp);
     <rich_text>
 Ej: SELECT * FROM emp WHERE oficio = (SELECT oficio FROM emp WHERE apellido = 'alonso') AND salario &gt; (SELECT salario FROM emp WHERE apellido ='sala');
 
-→ IN (para devolver mas de un valor)
+• IN (para devolver mas de un valor)
 Ej: SELECT * FROM emp WHERE oficio IN (SELECT oficio FROM emp WHERE apellido = 'jimenez' OR apellido = 'alonso');
 
 → ROWNUM &lt;= numfilas (muestra el numero de filas especificado)
@@ -482,6 +482,83 @@ CASE TURNO
     ELSE 'NOCHE'
 END AS TURNOBONITO, turno 
 FROM plantilla;
+
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS DE ACCION</rich_text>
+    <rich_text>
+
+• COMMIT: Los cambios son permanentes.
+• ROLLBACK: Deshace los cambios realizados.
+
+Dentro de las consultas de accion, tenemos 3 instrucciones:
+
+→ INSERT: Crea un nuevo registro en la tabla hasta su confirmacion (commit o rollback).
+
+	→ SINTAXIS: Hay 2 tipos de sintaxis:
+		
+		1. Insertar todos los valores de la fila (todos los datos de la tabla)
+			* Esta sintaxis utiliza la tabla como base para todos los valores, es decir, deberiamos escribir 		TODOS los valores y como esten en el orden de la tabla.
+			
+			→ Insert into TABLA values (col1, col2, col3);
+			
+			Ej: Insert into DEPT values (50, ‘PYTHON’, ‘ALCOBENDAS’);
+			-- insertamos en la tabla un numero de dpto, el nombre del dpto y la localidad.
+
+		2. Insertar solamente algunos valores de la fila/tabla.
+			* Esta sintaxis permite definir solo algunos valores de la fila, no es necesario indicar todos.
+			* El orden de los valores depende de las columnas que yo le indique en la consulta. 
+
+			Sintaxis: insert into TABLA (col1, col2) values (val, val2)
+			
+			Ej: insert into DEPT (DEPT_NO, LOC) values (51,  ‘ALICANTE’);
+			-- Insertamos un dpto 51 en la localidad de Alicante.
+			
+		* En las consultas de accion son muy utiles las subconsultas y son recomendables.
+		
+→ DELETE: Elimina uno o mas registros de la tabla (Tambien vale para eliminar la tabla entera).
+	
+	→ SINTAXIS
+	
+		→ delete from TABLA where condicion;
+		Ej: delete from PLANTILLA where HOSPITAL_COD = (select HOSPITAL_COD from HOSPITAL where NOMBRE = ‘El Carmen’);
+		-- Borrar de la plantilla cuyo codigo de hospital sea igual al codigo correspondiente a ‘El Carmen’.
+		
+
+NOTA: Si la consulta NO tiene where, elimina todos los registros de la tabla.
+
+		→ delete from TABLA;
+		
+
+→ UPDATE: Modifica uno o mas registros de la tabla-.
+	* En la misma consulta podemos indicar que deseamos modificar mas de una consulta.
+	
+	→ SINTAXIS
+	
+		→ update TABLA set CAMPO1= valor 1, CAMPO2= valor2
+		
+		Ej: update PLANTILLA set funcion = ‘ENFERMERA’, SALARIO= SALARIO +1
+		where funcion = ‘ENFERMERO';
+		-- Todos los los ENFERMEROS pasan a ser ENFERMERA y se les sube sl salario a todos en 1.
+		
+NOTA: Si no se pone WHERE se aplica a todos los registros de la tabla.	
+
+		→ update TABLA set CAMPO1= valor 1, CAMPO2= valor2
+		
+		Ej: update PLANTILLA set SALARIO = SALARIO + 1;
+		-- Sube el salario de toda la plantilla en 1.
+		
+• Por supuesto, en UPDATE podemos utilizar subconsultas.
+•
+		(APUNTES)
+
+
+NOTA: Las instrucciones WHERE son iguales que en las consultas de seleccion, operadores y todo.
+
+
+Por ultimo, tenemos una instruccion para eliminar todos los registros de una tabla de la forma mas rapida porque no tiene rollback.
+
+→ TRUNCATE TABLE NOMBRETABLA (Suelen tener esta funcion bloqueada en las empresas para los users).
 
 
 

@@ -208,7 +208,7 @@
 
 </rich_text>
   </node>
-  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770396127">
+  <node unique_id="3" master_id="0" name="SQL" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770242417" ts_lastsave="1770654222">
     <rich_text foreground="#ffbe6f">## CONSULTAS DE AGRUPACION (MISMA TABLA)</rich_text>
     <rich_text>
 
@@ -341,7 +341,9 @@ Ej: </rich_text>
 
 
 
-## CONSULTAS COMBINADAS (DISTINTAS TABLAS)
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS COMBINADAS (DISTINTAS TABLAS)</rich_text>
+    <rich_text>
 
 • SINTAXIS
 SELECT tabla1.campo, tabla1.campo2, tabla2.campo1, tabla2.campo2 FROM tabla1 INNER JOIN tabla2 ON tabla1.camporelacion = tabla2.camporelacion;
@@ -360,7 +362,9 @@ Ej: SELECT e.apellIdo, e.oficio, d.dnombre, d.loc FROM emp e INNER JOIN dept d o
 
 
 
-## CONSULTAS COMBINADAS + CONSULTAS DE AGRUPACION
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS COMBINADAS + CONSULTAS DE AGRUPACION</rich_text>
+    <rich_text>
 Ej: SELECT COUNT(*) AS personas, dept.dnombre FROM emp INNER JOIN dept on emp.dept_no = dept.dept_no GROUP BY dept.dnombre;
 -- Muestra el numero de personas por cada nombre de departamento de los empleados.
 
@@ -388,7 +392,9 @@ Ej: select tabla1.campo1, tabla1.campo2, tabla2.campo1, tabla2.campo2, tabla3.ca
 Ej: SELECT plantilla.apellido, plantilla.funcion, hospital.nombre, hospital.direccion, sala.nombre FROM plantilla INNER JOIN hospital ON plantilla.hospital_cod = hospital.hospital_cod INNER JOIN sala ON hospital.hospital_cod = sala.hospital_cod AND plantilla.sala_cod = sala.sala_cod;
 
 
-## SUBCONSULTAS
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SUBCONSULTAS</rich_text>
+    <rich_text>
 (es necesario los datos de una primera consulta para realizad otra consulta)
 → Consultas de seleccion (evitarlas ya que pueden producir bloqueos).
 
@@ -400,15 +406,21 @@ Ej: SELECT * FROM emp WHERE salario=650000;
 → SINTAXIS (lo anterior pero combinada) CONSULTA1 =(CONSULTA2)
 Ej: SELECT * FROM emp WHERE salario=(SELECT MAX(salario) FROM emp);
 
-## VARIAS SUBCONSULTAS (CONSULTA1 = (CONSULTA2) Y (CONSULTA3)
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## VARIAS SUBCONSULTAS (CONSULTA1 = (CONSULTA2) Y (CONSULTA3)</rich_text>
+    <rich_text>
 Ej: SELECT * FROM emp WHERE oficio = (SELECT oficio FROM emp WHERE apellido = 'alonso') AND salario &gt; (SELECT salario FROM emp WHERE apellido ='sala');
 
-→ IN (para devolver mas de un valor)
+• IN (para devolver mas de un valor)
 Ej: SELECT * FROM emp WHERE oficio IN (SELECT oficio FROM emp WHERE apellido = 'jimenez' OR apellido = 'alonso');
 
 → ROWNUM &lt;= numfilas (muestra el numero de filas especificado)
 
-## CONSULTAS UNION (TABLAS QUE NO ESTAN UNIDAS)
+
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS UNION (TABLAS QUE NO ESTAN UNIDAS)</rich_text>
+    <rich_text>
 
 → Hay que seguir 3 normas:
 	1. La primera consulta es la MAIN.
@@ -426,7 +438,9 @@ SELECT apellido, funcion, salario FROM plantilla;
 
 
 
-## SELECT TO SELECT (HACER UN SELECT SOBRE UNA CONSULTA YA REALIZADA)
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SELECT TO SELECT (HACER UN SELECT SOBRE UNA CONSULTA YA REALIZADA)</rich_text>
+    <rich_text>
 
 → 1. Envolver la consulta sobre la que deseemos realizar el select entre parentesis.
 → 2. que la consulta envuelta tenga un alias.
@@ -444,7 +458,9 @@ WHERE consulta.sueldo &gt;= 250000;
 
 
 
-## SELECT TO ROW (ES UN IF EN EL SERVER)
+</rich_text>
+    <rich_text foreground="#ffbe6f">## SELECT TO ROW (ES UN IF EN EL SERVER)</rich_text>
+    <rich_text>
 
 → Evalua valores dentro de cada fila y permite cambiar el resultado a mostrar en el cursor por otros datos distintos.
 
@@ -468,6 +484,81 @@ END AS TURNOBONITO, turno
 FROM plantilla;
 
 
+</rich_text>
+    <rich_text foreground="#ffbe6f">## CONSULTAS DE ACCION</rich_text>
+    <rich_text>
+
+• COMMIT: Los cambios son permanentes.
+• ROLLBACK: Deshace los cambios realizados.
+
+Dentro de las consultas de accion, tenemos 3 instrucciones:
+
+→ INSERT: Crea un nuevo registro en la tabla hasta su confirmacion (commit o rollback).
+
+	→ SINTAXIS: Hay 2 tipos de sintaxis:
+		
+		1. Insertar todos los valores de la fila (todos los datos de la tabla)
+			* Esta sintaxis utiliza la tabla como base para todos los valores, es decir, deberiamos escribir 		TODOS los valores y como esten en el orden de la tabla.
+			
+			→ Insert into TABLA values (col1, col2, col3);
+			
+			Ej: Insert into DEPT values (50, ‘PYTHON’, ‘ALCOBENDAS’);
+			-- insertamos en la tabla un numero de dpto, el nombre del dpto y la localidad.
+
+		2. Insertar solamente algunos valores de la fila/tabla.
+			* Esta sintaxis permite definir solo algunos valores de la fila, no es necesario indicar todos.
+			* El orden de los valores depende de las columnas que yo le indique en la consulta. 
+
+			Sintaxis: insert into TABLA (col1, col2) values (val, val2)
+			
+			Ej: insert into DEPT (DEPT_NO, LOC) values (51,  ‘ALICANTE’);
+			-- Insertamos un dpto 51 en la localidad de Alicante.
+			
+		* En las consultas de accion son muy utiles las subconsultas y son recomendables.
+		
+→ DELETE: Elimina uno o mas registros de la tabla (Tambien vale para eliminar la tabla entera).
+	
+	→ SINTAXIS
+	
+		→ delete from TABLA where condicion;
+		Ej: delete from PLANTILLA where HOSPITAL_COD = (select HOSPITAL_COD from HOSPITAL where NOMBRE = ‘El Carmen’);
+		-- Borrar de la plantilla cuyo codigo de hospital sea igual al codigo correspondiente a ‘El Carmen’.
+		
+
+NOTA: Si la consulta NO tiene where, elimina todos los registros de la tabla.
+
+		→ delete from TABLA;
+		
+
+→ UPDATE: Modifica uno o mas registros de la tabla-.
+	* En la misma consulta podemos indicar que deseamos modificar mas de una consulta.
+	
+	→ SINTAXIS
+	
+		→ update TABLA set CAMPO1= valor 1, CAMPO2= valor2
+		
+		Ej: update PLANTILLA set funcion = ‘ENFERMERA’, SALARIO= SALARIO +1
+		where funcion = ‘ENFERMERO';
+		-- Todos los los ENFERMEROS pasan a ser ENFERMERA y se les sube sl salario a todos en 1.
+		
+NOTA: Si no se pone WHERE se aplioca a todos los registros de la tabla.	
+
+		→ update TABLA set CAMPO1= valor 1, CAMPO2= valor2
+		
+		Ej: update PLANTILLA set SALARIO = SALARIO + 1;
+		-- Sube el salario de toda la plantilla en 1.
+		
+• Por supuesto, en UPDATE podemos utilizar subconsultas.
+•
+		(APUNTES)
+
+
+NOTA: Las instrucciones WHERE son iguales que en las consultas de seleccion, operadores y todo.
+
+
+Por ultimo, tenemos una instruccion para eliminar todos los registros de una tabla de la forma mas rapida porque no tiene rollback.
+
+→ TRUNCATE TABLE NOMBRETABLA (Suelen tene
 
 
 
