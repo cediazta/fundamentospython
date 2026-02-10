@@ -60,3 +60,5 @@ ON emp.dept_no = dept.dept_no
 GROUP BY dept.loc
 WHERE dept.loc = 'MADRID'
 AND dept.loc = 'BARCELONA';
+
+

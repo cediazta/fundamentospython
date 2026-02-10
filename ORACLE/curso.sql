@@ -15,3 +15,8 @@ delete from plantilla where hospital_cod is null or hospital_cod not in (select 
 
 
 
+
+
+
+
+

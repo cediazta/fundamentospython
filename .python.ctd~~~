@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770664712">
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770743578">
     <rich_text>## Tipos de Variables
 	
 	→ str (texto)
@@ -171,9 +171,24 @@ BBDD:
 
 ## Oracledb
 
-→ connection:
-→ cursor:
-→ fetchone():
+→ connection: se designa como variable y se conecta oracledb con el metodo connect.
+	Ej: connection = oracledb.connect(user="system", password="oracle", dsn="localhost/FREEPDB1")
+	
+→ cursor: se crea una variable para ejecutar las consultas
+	Ej: cursor = connection.cursor()
+		  cursor.execute(variableConsultaSql)
+		
+→ .fetchone(): metodo que se mueve por cada fila cada vez que lo ejecutamos.
+	Ej: row = cursor.fetchone()
+	
+→ .close(): cerrar todos los recursos utilizados
+	cursor.close()
+	connection.close()
+
+→ .rowcount: cuenta las lineas que han sido afectadas(eliminadas).
+
+→ .commit: confirmar la modificacion
+→ .rollback: volver a antes de la modifi
 		
 ## Tkinter
 
