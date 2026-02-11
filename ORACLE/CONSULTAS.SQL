@@ -1,1 +1,1 @@
-select * from hospital;
+select apellido, funcion from PLANTILLA where funcion = 'ENFERMERO';

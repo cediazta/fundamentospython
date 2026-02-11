@@ -1,0 +1,34 @@
+# Quiero un menu con las funciones plantilla.
+# El usuario seleccionara una funcion mostrandonos los apellidos de la funcion seleccionada
+
+import oracledb
+
+# Conectamos con la BBDD
+connection = oracledb.connect(user="system", 
+                              password="oracle", 
+                              dsn="localhost/FREEPDB1")
+cursor = connection.cursor()
+
+listaPlantilla = []
+contador = 1
+
+sql = "select distinct funcion from plantilla"
+cursor.execute(sql)
+
+for row in cursor:
+    listaPlantilla.append(row[0])
+    print(f"{contador}. {row[0]}")
+    contador += 1
+
+opcion = int(input("Selecciona una opcion: "))
+
+sql = "select apellido, funcion from PLANTILLA where funcion = :Parametro1"
+cursor.execute(sql, (listaPlantilla[opcion - 1],))
+
+for row in cursor:
+    print(f"Apellido: {row[0]} - Funcion: {row[1]}")
+
+cursor.close()
+connection.close()
+print("Fin de programa")
+

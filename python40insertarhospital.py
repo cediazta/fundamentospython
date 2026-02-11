@@ -1,6 +1,5 @@
 # quiero un programa que inserte un nuevo hospital, le pedimos los datos al usuario y despues mostramos los hospitales.
 
-
 import oracledb
 
 # Conectamos con la BBDD
@@ -28,6 +27,9 @@ for row in cursor:
 cursor.close()
 connection.close()
 print("Fin de programa.")
+
+
+
 
 
 
