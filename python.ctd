@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770821136">
-    <rich_text>## Tipos de Variables
+  <node unique_id="1" master_id="0" name="Python" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1723531007" ts_lastsave="1770922260">
+    <rich_text>## Arquitectura de archivos (paquetes)
+	→ Models: Son nuestras clases (Persona, Mes, Coche...).
+	→ Services: Son las clases de acceso a a datos (clases que trabajan con datos).
+	→ Main: Son los programas principales que ejecutan.
+
+• Para generar un paquete de clases en una carpeta, se debe crear un fichero llamado __init__.py
+
+
+	# Sintaxis:
+		→ 	
+
+
+## Tipos de Variables
 	
 	→ str (texto)
 	→ int (numeros)
@@ -190,7 +202,6 @@ BBDD:
 → .commit(): confirmar la modificacion (solo para modificaciones o eliminaciones)
 → .rollback(): volver a antes de la modificacion (solo para modificaciones o eliminaciones)
 
-pytho
 
 
 		
